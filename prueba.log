@@ -12,16 +12,6 @@ math = Identificador
 . = Caracter
 h = Identificador
 > = OperadorRelacional
-# = Caracter
-include = Identificador
-< = OperadorRelacional
-stdio = Identificador
-> = OperadorRelacional
-# = Caracter
-include = Identificador
-< = OperadorRelacional
-math = Identificador
-> = OperadorRelacional
 char = tipoDatos
 a = Identificador
 ; = FinSentencia
@@ -63,7 +53,7 @@ printf = Identificador
 ; = FinSentencia
 printf = Identificador
 ( = Caracter
-"\nRadio = " = Cadena
+"\nRadio = %i" = Cadena
 , = Caracter
 radio = Identificador
 ) = Caracter
@@ -138,5 +128,6 @@ printf = Identificador
 ) = Caracter
 ; = FinSentencia
 } = Fin
-} = Fin
- = Fin
+i = Identificador
+++ = IncrementoTermino
+Error Sintaxis: Se espera un ;

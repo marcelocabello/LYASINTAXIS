@@ -1,25 +1,23 @@
 #include <stdio.h>
 #include <math.h>
-#include <stdio>
-#include <math>
 
-char  a;
-int   a,b,c,d,radio;
-float x,y,z;
-char  w;
+char a;
+int a, b, c, d, radio;
+float x, y, z;
+char w;
 
 void main()
 {
     printf("\nHola mundo");
     printf("\n============");
-    printf("\nRadio = ",radio);
-    scanf("%i",&radio);
+    printf("\nRadio = %i", radio);
+    scanf("%i", &radio);
 
-    radio = (3+5)*8-(10-4)/2;
+    radio = (3 + 5) * 8 - (10 - 4) / 2;
 
-    z = (a+b)*c;
+    z = (a + b) * c;
 
-    if ((3+5)*8 > z)
+    if ((3 + 5) * 8 > z)
     {
         printf("\nEs mayor");
     }
@@ -28,4 +26,7 @@ void main()
     {
         printf("\nRadio es par");
     }
+     i++;
+
+    return 0;
 }

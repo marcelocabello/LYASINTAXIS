@@ -181,21 +181,35 @@ namespace LYASINTAXIS
             match(";");
         }
         //If -> if (Condicion) instruccion | bloqueInstrucciones 
-        //      (else instruccion | bloqueInstrucciones)?
+        //      (else instruccion | bloqueInstrucciones)? REQUISITO REQUERIMIENTO 4
         private void If()
         {
-            match("if");
-            match("(");
-            Condicion();
-            match(")");
-            if (getContenido() == "{")
-            {
-                bloqueInstrucciones();
-            }
-            else
-            {
-                Instruccion();
-            }
+           match("if");
+    match("(");
+    Condicion();
+    match(")");
+    
+    if (getContenido() == "{")
+    {
+        bloqueInstrucciones();
+    }
+    else
+    {
+        Instruccion();
+    }
+    if (getContenido() == "else")
+    {
+        match("else");
+
+        if (getContenido() == "{")
+        {
+            bloqueInstrucciones();
+        }
+        else
+        {
+            Instruccion();
+        }
+    }
         }
         //Condicion -> Expresion operadoRelacional Expresion
         private void Condicion()
