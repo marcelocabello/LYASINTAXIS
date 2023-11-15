@@ -12,8 +12,8 @@ void main()
 {
     printf("\nHola mundo");
     printf("\n============");
-    printf("\nRadio = ");
-    scanf("%i");
+    printf("\nRadio = ",radio);
+    scanf("%i",&radio);
 
     radio = (3+5)*8-(10-4)/2;
 

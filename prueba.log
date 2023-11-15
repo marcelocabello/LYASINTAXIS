@@ -64,11 +64,16 @@ printf = Identificador
 printf = Identificador
 ( = Caracter
 "\nRadio = " = Cadena
+, = Caracter
+radio = Identificador
 ) = Caracter
 ; = FinSentencia
 scanf = Identificador
 ( = Caracter
 "%i" = Cadena
+, = Caracter
+& = Caracter
+radio = Identificador
 ) = Caracter
 ; = FinSentencia
 radio = Identificador

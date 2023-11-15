@@ -127,21 +127,32 @@ namespace LYASINTAXIS
                 Asignacion();
             }
         }
-        //Printf -> printf(cadena);
+        //Printf -> printf(cadena(, Identificador)?); REQUISITO 1
         private void Printf()
         {
             match("printf");
             match("(");
             match(Tipos.Cadena);
+
+            if (getContenido() == ",")
+            {
+                match(",");
+                match(Tipos.Identificador);
+            }
+
             match(")");
             match(";");
+
         }
-        //Scanf -> scanf(cadena);
+        // Scanf -> scanf(cadena,&Identificador); REQUISITO 2
         private void Scanf()
         {
             match("scanf");
             match("(");
             match(Tipos.Cadena);
+            match(",");
+            match("&");
+            match(Tipos.Identificador);
             match(")");
             match(";");
         }
@@ -193,17 +204,17 @@ namespace LYASINTAXIS
             match(Tipos.OperadorRelacional);
             Expresion();
         }
-        //While -> while(Condicion) bloque de instrucciones | instruccion
+        //While -> while(Condicion) bloqueInstrucciones | Instruccion
         private void While()
         {
 
         }
-        //Do -> do bloque de instrucciones | intruccion while(Condicion)
+        //Do -> do bloqueInstrucciones | Intruccion while(Condicion);
         private void Do()
         {
 
         }
-        //For -> for(Asignacion Condicion; Incremento) Bloque de instruccones | Intruccion 
+        //For -> for(Asignacion Condicion; Incremento) BloqueInstruccones | Intruccion 
         private void For()
         {
 
