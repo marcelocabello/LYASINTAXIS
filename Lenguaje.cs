@@ -161,55 +161,54 @@ namespace LYASINTAXIS
         private void Asignacion()
         {
             match(Tipos.Identificador);
-            if (getClasificacion() == Tipos.OperadorTermino)
-            {
-                match(Tipos.OperadorTermino);
-            }
-            else if (getClasificacion() == Tipos.IncrementoTermino)
-            {
 
+            if (getClasificacion() == Tipos.OperadorTermino || getClasificacion() == Tipos.IncrementoTermino)
+            {
+                Incremento();  // Aquí se detecta i++, i--, y operadores termino
             }
             else if (getClasificacion() == Tipos.IncrementoFactor)
             {
-
+                Incremento();  // Llama al método Incremento para el incremento en factores
             }
             else
             {
-                match("=");
+                match(Tipos.Asignacion);
                 Expresion();
             }
+
             match(";");
         }
+
         //If -> if (Condicion) instruccion | bloqueInstrucciones 
         //      (else instruccion | bloqueInstrucciones)? REQUISITO REQUERIMIENTO 4
         private void If()
         {
-           match("if");
-    match("(");
-    Condicion();
-    match(")");
-    
-    if (getContenido() == "{")
-    {
-        bloqueInstrucciones();
-    }
-    else
-    {
-        Instruccion();
-    }
-    if (getContenido() == "else")
-    {
-        match("else");
+            match("if");
+            match("(");
+            Condicion();
+            match(")");
 
-        if (getContenido() == "{")
-        {
-            bloqueInstrucciones();
-        }
-        else
-        {
-            Instruccion();
-        }
-    }
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
+            if (getContenido() == "else")
+            {
+                match("else");
+
+                if (getContenido() == "{")
+                {
+                    bloqueInstrucciones();
+                }
+                else
+                {
+                    Instruccion();
+                }
+            }
         }
         //Condicion -> Expresion operadoRelacional Expresion
         private void Condicion()

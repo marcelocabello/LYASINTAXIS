@@ -26,7 +26,10 @@ void main()
     {
         printf("\nRadio es par");
     }
-     i++;
+    else
+    {
+        printf("\nRadio es impar");
+    }
 
-    return 0;
+    
 }

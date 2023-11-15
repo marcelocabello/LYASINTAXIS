@@ -128,6 +128,13 @@ printf = Identificador
 ) = Caracter
 ; = FinSentencia
 } = Fin
-i = Identificador
-++ = IncrementoTermino
-Error Sintaxis: Se espera un ;
+else = reservada
+{ = Inicio
+printf = Identificador
+( = Caracter
+"\nRadio es impar" = Cadena
+) = Caracter
+; = FinSentencia
+} = Fin
+} = Fin
+ = Fin
