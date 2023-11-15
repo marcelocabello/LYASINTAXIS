@@ -172,6 +172,7 @@ namespace LYASINTAXIS
                 if (estado >= 0)
                 {
                     // si el caracter fue enter incrementa la linea
+                    linea++;
                     archivo.Read();
                     if (estado > 0)
                     {
