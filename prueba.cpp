@@ -14,7 +14,7 @@ void main()
     scanf("%i", &radio);
 
     radio = (3 + 5) * 8 - (10 - 4) / 2;
-
+    a++; b++; c++; d++;
     z = (a + b) * c;
 
     if ((3 + 5) * 8 > z)

@@ -164,11 +164,11 @@ namespace LYASINTAXIS
 
             if (getClasificacion() == Tipos.OperadorTermino || getClasificacion() == Tipos.IncrementoTermino)
             {
-                Incremento();  // Aquí se detecta i++, i--, y operadores termino
+                Incremento();  
             }
             else if (getClasificacion() == Tipos.IncrementoFactor)
             {
-                Incremento();  // Llama al método Incremento para el incremento en factores
+                Incremento();  
             }
             else
             {
@@ -235,7 +235,13 @@ namespace LYASINTAXIS
         //Incremento -> Identificador ++ | --
         private void Incremento()
         {
-
+            match(";");
+            if (getClasificacion() == Tipos.IncrementoTermino)
+            {
+                 
+            }
+            
+                
         }
         //Main      -> void main() bloqueInstrucciones
         private void Main()
