@@ -220,29 +220,65 @@ namespace LYASINTAXIS
         //While -> while(Condicion) bloqueInstrucciones | Instruccion
         private void While()
         {
+            match("while");
+    match("(");
+    Condicion();
+    match(")");
 
+    if (getContenido() == "{")
+    {
+        bloqueInstrucciones();
+    }
+    else
+    {
+        Instruccion();
+    }
         }
         //Do -> do bloqueInstrucciones | Intruccion while(Condicion);
         private void Do()
         {
-
+match("do");
+    bloqueInstrucciones();
+    match("while");
+    match("(");
+    Condicion();
+    match(")");
+    match(";");
         }
         //For -> for(Asignacion Condicion; Incremento) BloqueInstruccones | Intruccion 
         private void For()
         {
-
+            match("for");
+    match("(");
+    Asignacion();
+    match(";");
+    Condicion();
+    match(";");
+    Incremento();
+    match(")");
+    bloqueInstrucciones();   
         }
         //Incremento -> Identificador ++ | --
-        private void Incremento()
-        {
-            match(";");
-            if (getClasificacion() == Tipos.IncrementoTermino)
-            {
-                 
-            }
-            
-                
-        }
+        //Incremento -> Identificador ++ | --
+private void Incremento()
+{
+    match(Tipos.Identificador);
+
+    if (getClasificacion() == Tipos.IncrementoTermino)
+    {
+        match("++");
+    }
+    else if (getClasificacion() == Tipos.IncrementoFactor)
+    {
+        match("--");
+    }
+    else
+    {
+        // Puedes manejar el error o lanzar una excepción aquí si es necesario.
+        Console.WriteLine("Error: Se esperaba ++ o --");
+    }
+}
+
         //Main      -> void main() bloqueInstrucciones
         private void Main()
         {
