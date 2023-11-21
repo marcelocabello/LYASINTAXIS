@@ -284,7 +284,7 @@ namespace LYASINTAXIS
             {
                 match("++");
             }
-            else if (getClasificacion() == Tipos.IncrementoFactor)
+            else if (getClasificacion() == Tipos.IncrementoTermino)
             {
                 match("--");
             }
