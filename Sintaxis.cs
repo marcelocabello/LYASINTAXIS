@@ -11,10 +11,12 @@ namespace LYASINTAXIS
         {
             nextToken();
         }
+
         public Sintaxis(string nombre) : base(nombre)
         {
             nextToken();
         }
+
         public void match(string espera)
         {
             if (getContenido() == espera)
@@ -23,9 +25,10 @@ namespace LYASINTAXIS
             }
             else
             {
-                throw new Error("Sintaxis: Se espera un "+espera,log);
+                throw new Error($"Sintaxis: Se espera '{espera}' en la línea {linea}.", log);
             }
         }
+
         public void match(Tipos espera)
         {
             if (getClasificacion() == espera)
@@ -34,7 +37,7 @@ namespace LYASINTAXIS
             }
             else
             {
-                throw new Error("Sintaxis: Se espera un "+espera,log);
+                throw new Error($"Sintaxis: Se espera un '{espera}' en la línea {linea}.", log);
             }
         }
     }

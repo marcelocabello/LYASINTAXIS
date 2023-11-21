@@ -10,7 +10,7 @@ namespace LYASINTAXIS
     {
         const int F = -1;
         const int E = -2;
-        int linea;
+        protected int linea;
         private StreamReader archivo;
         protected StreamWriter log;
 
@@ -172,7 +172,10 @@ namespace LYASINTAXIS
                 if (estado >= 0)
                 {
                     // si el caracter fue enter incrementa la linea
-                    linea++;
+                    if (c == '\n')
+                    {
+                        linea++;
+                    }
                     archivo.Read();
                     if (estado > 0)
                     {
