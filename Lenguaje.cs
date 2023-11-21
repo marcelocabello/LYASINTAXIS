@@ -161,24 +161,35 @@ namespace LYASINTAXIS
         private void Asignacion()
         {
             match(Tipos.Identificador);
-
-            if (getClasificacion() == Tipos.OperadorTermino || getClasificacion() == Tipos.IncrementoTermino)
+            if (getContenido() == "++" || getContenido() == "--")
             {
-                Incremento();  
+                match(Tipos.IncrementoTermino);
+            }
+            else if (getClasificacion() == Tipos.OperadorTermino)
+            {
+                match(Tipos.OperadorTermino);
+            }
+            else if (getClasificacion() == Tipos.OperadorFactor)
+            {
+                match(Tipos.OperadorFactor);
             }
             else if (getClasificacion() == Tipos.IncrementoFactor)
             {
-                Incremento();  
+                match(Tipos.IncrementoFactor);
+                Expresion();
+            }
+            else if (getClasificacion() == Tipos.IncrementoTermino)
+            {
+                match(Tipos.IncrementoTermino);
+                Expresion();
             }
             else
             {
-                match(Tipos.Asignacion);
+                match("=");
                 Expresion();
             }
-
             match(";");
         }
-
         //If -> if (Condicion) instruccion | bloqueInstrucciones 
         //      (else instruccion | bloqueInstrucciones)? REQUISITO REQUERIMIENTO 4
         private void If()
@@ -221,63 +232,57 @@ namespace LYASINTAXIS
         private void While()
         {
             match("while");
-    match("(");
-    Condicion();
-    match(")");
+            match("(");
+            Condicion();
+            match(")");
 
-    if (getContenido() == "{")
-    {
-        bloqueInstrucciones();
-    }
-    else
-    {
-        Instruccion();
-    }
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
         }
         //Do -> do bloqueInstrucciones | Intruccion while(Condicion);
         private void Do()
         {
-match("do");
-    bloqueInstrucciones();
-    match("while");
-    match("(");
-    Condicion();
-    match(")");
-    match(";");
+            match("do");
+            bloqueInstrucciones();
+            match("while");
+            match("(");
+            Condicion();
+            match(")");
+            match(";");
         }
         //For -> for(Asignacion Condicion; Incremento) BloqueInstruccones | Intruccion 
         private void For()
         {
             match("for");
-    match("(");
-    Asignacion();
-    match(";");
-    Condicion();
-    match(";");
-    Incremento();
-    match(")");
-    bloqueInstrucciones();   
+            match("(");
+            Asignacion();
+           // match(";");
+            Condicion();
+            match(";");
+            Incremento();
+            match(")");
+            bloqueInstrucciones();
         }
         //Incremento -> Identificador ++ | --
-        //Incremento -> Identificador ++ | --
-private void Incremento()
-{
-    match(Tipos.Identificador);
+        private void Incremento()
+        {
+            match(Tipos.Identificador);
 
-    if (getClasificacion() == Tipos.IncrementoTermino)
-    {
-        match("++");
-    }
-    else if (getClasificacion() == Tipos.IncrementoFactor)
-    {
-        match("--");
-    }
-    else
-    {
-        // Puedes manejar el error o lanzar una excepción aquí si es necesario.
-        Console.WriteLine("Error: Se esperaba ++ o --");
-    }
-}
+            if (getClasificacion() == Tipos.IncrementoTermino)
+            {
+                match("++");
+            }
+            else if (getClasificacion() == Tipos.IncrementoFactor)
+            {
+                match("--");
+            }
+        }
 
         //Main      -> void main() bloqueInstrucciones
         private void Main()
