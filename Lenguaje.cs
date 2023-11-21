@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-/*
+/*listos
     Requerimiento 1: Printf -> printf(cadena(, Identificador)?);
     Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
     Requerimiento 3: Agregar a la Asignacion +=, -=, *=. /=, %=
@@ -165,14 +165,6 @@ namespace LYASINTAXIS
             {
                 match(Tipos.IncrementoTermino);
             }
-            else if (getClasificacion() == Tipos.OperadorTermino)
-            {
-                match(Tipos.OperadorTermino);
-            }
-            else if (getClasificacion() == Tipos.OperadorFactor)
-            {
-                match(Tipos.OperadorFactor);
-            }
             else if (getClasificacion() == Tipos.IncrementoFactor)
             {
                 match(Tipos.IncrementoFactor);
@@ -249,7 +241,14 @@ namespace LYASINTAXIS
         private void Do()
         {
             match("do");
-            bloqueInstrucciones();
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
             match("while");
             match("(");
             Condicion();
@@ -267,7 +266,14 @@ namespace LYASINTAXIS
             match(";");
             Incremento();
             match(")");
-            bloqueInstrucciones();
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
         }
         //Incremento -> Identificador ++ | --
         private void Incremento()
