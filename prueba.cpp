@@ -23,6 +23,7 @@ void main()
             printf("",j);
         }
         printf("\n");
+
     }
     i = 0;
     do
