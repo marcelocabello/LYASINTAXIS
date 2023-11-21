@@ -279,14 +279,14 @@ namespace LYASINTAXIS
         private void Incremento()
         {
             match(Tipos.Identificador);
-
-            if (getClasificacion() == Tipos.IncrementoTermino)
+            if (getContenido()=="++"||getContenido()=="--")
             {
-                match("++");
+                
+                match(Tipos.IncrementoTermino);
             }
-            else if (getClasificacion() == Tipos.IncrementoTermino)
+            else
             {
-                match("--");
+                match(Tipos.IncrementoFactor);
             }
         }
 
