@@ -289,6 +289,10 @@ namespace LYASINTAXIS
                 match(Tipos.IncrementoTermino);
 
             }
+            else 
+            {
+                match(Tipos.IncrementoTermino);
+            }
         }
 
         //Main      -> void main() bloqueInstrucciones
