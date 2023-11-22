@@ -29,6 +29,14 @@ main = Identificador
 ( = Caracter
 ) = Caracter
 { = Inicio
+x = Identificador
+-= = IncrementoTermino
+( = Caracter
+x = Identificador
+- = OperadorTermino
+7 = Numero
+) = Caracter
+; = FinSentencia
 y = Identificador
 = = Asignacion
 10 = Numero

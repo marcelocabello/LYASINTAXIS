@@ -25,7 +25,7 @@ namespace LYASINTAXIS
             }
             else
             {
-                throw new Error($"Sintaxis: Se espera '{espera}' en la línea {linea}.", log);
+                throw new Error($"Sintaxis: Se espera '{espera}' en la línea {linea} de tu codigo", log);
             }
         }
 
@@ -37,7 +37,7 @@ namespace LYASINTAXIS
             }
             else
             {
-                throw new Error($"Sintaxis: Se espera un '{espera}' en la línea {linea}.", log);
+                throw new Error($"Sintaxis: Se espera un '{espera}' en la línea {linea} de tu codigo", log);
             }
         }
     }
