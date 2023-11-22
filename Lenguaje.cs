@@ -275,7 +275,7 @@ namespace LYASINTAXIS
                 Instruccion();
             }
         }
-        //Incremento -> Identificador ++ | -- separar en dos if y else if
+        //Incremento -> Identificador ++ | -- separar en dos if y else 
         private void Incremento()
         {
             match(Tipos.Identificador);
@@ -284,14 +284,10 @@ namespace LYASINTAXIS
                 match(Tipos.IncrementoTermino);
 
             }
-            else if (getContenido() == "--")
+            else   
             {
-                match(Tipos.IncrementoTermino);
+                match("--");
 
-            }
-            else 
-            {
-                match(Tipos.IncrementoTermino);
             }
         }
 
