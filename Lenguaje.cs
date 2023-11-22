@@ -261,7 +261,7 @@ namespace LYASINTAXIS
             match("for");
             match("(");
             Asignacion();
-           // match(";");
+            // match(";");
             Condicion();
             match(";");
             Incremento();
@@ -275,19 +275,19 @@ namespace LYASINTAXIS
                 Instruccion();
             }
         }
-        //Incremento -> Identificador ++ | --
+        //Incremento -> Identificador ++ | -- separar en dos if y else if
         private void Incremento()
         {
             match(Tipos.Identificador);
-            if (getContenido ()=="++")
+            if (getContenido() == "++")
             {
                 match(Tipos.IncrementoTermino);
-                
+
             }
-            else if (getContenido ()== "--")
+            else if (getContenido() == "--")
             {
                 match(Tipos.IncrementoTermino);
-                
+
             }
         }
 
